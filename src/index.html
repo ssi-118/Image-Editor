@@ -2,9 +2,10 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>PixelEdit</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css" rel="stylesheet">
@@ -17,73 +18,128 @@
             <div class="brand">
                 <h1>PixelEdit</h1>
                 <div class="btn-group">
-                    <button class="btn btn-outline-secondary icon-btn" id="undo" disabled>
-                        <i class="bi bi-arrow-counterclockwise"></i></button>
-                    <button class="btn btn-outline-secondary icon-btn" id="redo" disabled>
-                        <i class="bi bi-arrow-clockwise"></i></button>
+                    <button class="btn btn-outline-secondary icon-btn" id="undo" title="Undo" disabled>
+                        <i class="bi bi-arrow-counterclockwise"></i>
+                    </button>
+                    <button class="btn btn-outline-secondary icon-btn" id="redo" title="Redo" disabled>
+                        <i class="bi bi-arrow-clockwise"></i>
+                    </button>
                 </div>
             </div>
 
             <section class="section">
                 <h2>Zoom</h2>
                 <div class="input-group">
-                    <button class="btn btn-outline-secondary" id="zoomOut"><i class="bi bi-zoom-out"></i></button>
-                    <button class="btn btn-outline-secondary" id="zoomIn"><i class="bi bi-zoom-in"></i></button>
+                    <button class="btn btn-outline-secondary" id="zoomOut" title="Zoom out">
+                        <i class="bi bi-zoom-out"></i>
+                    </button>
+                    <button class="btn btn-outline-secondary" id="zoomIn" title="Zoom in">
+                        <i class="bi bi-zoom-in"></i>
+                    </button>
                     <span class="input-group-text ms-auto" id="zoomText">80%</span>
                 </div>
             </section>
 
             <section class="section">
                 <h2>Upload Asset</h2>
-                <input class="form-control" type="file" id="upload" accept="image/*">
+                <label class="drop-zone" id="dropZone">
+                    <input class="form-control d-none" type="file" id="upload" accept="image/*">
+                    <i class="bi bi-cloud-arrow-up"></i>
+                    <span>Drop image here or click to upload</span>
+                    <small id="fileName">No file selected</small>
+                </label>
             </section>
 
             <hr>
-
+            <!--Transform Section-->
             <section class="section">
                 <h2>Transform</h2>
                 <button class="btn btn-outline-primary" id="cropBtn">Enter Crop Mode</button>
+
                 <div class="crop-actions d-none" id="cropActions">
                     <button class="btn btn-primary" id="applyCrop">Apply Crop</button>
                     <button class="btn btn-outline-secondary" id="cancelCrop">Cancel</button>
                 </div>
-                <div class="btn-group">
-                    <button class="btn btn-outline-secondary" id="rotL"><i
-                            class="bi bi-arrow-counterclockwise"></i></button>
-                    <button class="btn btn-outline-secondary" id="rotR"><i class="bi bi-arrow-clockwise"></i></button>
-                    <button class="btn btn-outline-secondary" id="flipX"><i
-                            class="bi bi-symmetry-horizontal"></i></button>
-                    <button class="btn btn-outline-secondary" id="flipY"><i
-                            class="bi bi-symmetry-vertical"></i></button>
+
+                <div class="btn-group transform-tools">
+                    <button class="btn btn-outline-secondary" id="rotL" title="Rotate left">
+                        <i class="bi bi-arrow-counterclockwise"></i>
+                    </button>
+                    <button class="btn btn-outline-secondary" id="rotR" title="Rotate right">
+                        <i class="bi bi-arrow-clockwise"></i>
+                    </button>
+                    <button class="btn btn-outline-secondary" id="flipX" title="Flip horizontal">
+                        <i class="bi bi-symmetry-horizontal"></i>
+                    </button>
+                    <button class="btn btn-outline-secondary" id="flipY" title="Flip vertical">
+                        <i class="bi bi-symmetry-vertical"></i>
+                    </button>
                 </div>
             </section>
-
+            <!--Presets Section-->
             <section class="section">
-                <h2>Presets</h2>
-                <div class="preset-grid">
-                    <button class="btn preset-dark" data-preset="bw">B & W</button>
-                    <button class="btn preset-warm" data-preset="invert">Invert</button>
-                    <button class="btn preset-cyan" data-preset="dramatic">Dramatic</button>
-                    <button class="btn btn-outline-secondary" data-preset="retro">Retro</button>
+                <button class="collapse-heading" type="button" data-bs-toggle="collapse" data-bs-target="#presetsPanel"
+                    aria-expanded="true">
+                    <span>Presets</span>
+                    <i class="bi bi-chevron-down"></i>
+                </button>
+
+                <div class="collapse show" id="presetsPanel">
+                    <div class="preset-grid pt-2">
+                        <button class="btn preset-btn preset-bw" data-preset="bw">B & W</button>
+                        <button class="btn preset-btn preset-invert" data-preset="invert">Invert</button>
+                        <button class="btn preset-btn preset-dramatic" data-preset="dramatic">Dramatic</button>
+                        <button class="btn preset-btn preset-retro" data-preset="retro">Retro</button>
+                        <button class="btn preset-btn preset-cinematic" data-preset="cinematic">Cinematic</button>
+                        <button class="btn preset-btn preset-cool" data-preset="cool">Cool</button>
+                        <button class="btn preset-btn preset-warmtone" data-preset="warm">Warm</button>
+                        <button class="btn preset-btn preset-fade" data-preset="fade">Fade</button>
+                    </div>
                 </div>
             </section>
-
+            <!--Adjustments Section-->
             <section class="section">
-                <h2>Adjustments</h2>
-                <label class="range-row"><span>Brightness</span><strong id="brightnessVal">0</strong></label>
-                <input class="form-range" id="brightness" type="range" min="-100" max="100" value="0">
-                <label class="range-row"><span>Contrast</span><strong id="contrastVal">0</strong></label>
-                <input class="form-range" id="contrast" type="range" min="-100" max="100" value="0">
-                <label class="range-row"><span>Saturation</span><strong id="saturationVal">100</strong></label>
-                <input class="form-range" id="saturation" type="range" min="0" max="200" value="100">
-            </section>
+                <button class="collapse-heading" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#adjustmentsPanel" aria-expanded="true">
+                    <span>Adjustments</span>
+                    <i class="bi bi-chevron-down"></i>
+                </button>
 
-            <section class="section mt-auto">
+                <div class="collapse show" id="adjustmentsPanel">
+                    <div class="pt-2">
+                        <label class="range-row"><span>Brightness</span><strong id="brightnessVal">0</strong></label>
+                        <input class="form-range" id="brightness" type="range" min="-100" max="100" value="0">
+
+                        <label class="range-row"><span>Contrast</span><strong id="contrastVal">0</strong></label>
+                        <input class="form-range" id="contrast" type="range" min="-100" max="100" value="0">
+
+                        <label class="range-row"><span>Saturation</span><strong id="saturationVal">100</strong></label>
+                        <input class="form-range" id="saturation" type="range" min="0" max="200" value="100">
+
+                        <label class="range-row"><span>Grayscale</span><strong id="grayscaleVal">0</strong></label>
+                        <input class="form-range" id="grayscale" type="range" min="0" max="100" value="0">
+
+                        <label class="range-row"><span>Sepia</span><strong id="sepiaVal">0</strong></label>
+                        <input class="form-range" id="sepia" type="range" min="0" max="100" value="0">
+
+                        <label class="range-row"><span>Invert</span><strong id="invertVal">0</strong></label>
+                        <input class="form-range" id="invert" type="range" min="0" max="100" value="0">
+
+                        <label class="range-row"><span>Hue</span><strong id="hueVal">0</strong></label>
+                        <input class="form-range" id="hue" type="range" min="-180" max="180" value="0">
+
+                        <label class="range-row"><span>Blur</span><strong id="blurVal">0</strong></label>
+                        <input class="form-range" id="blur" type="range" min="0" max="10" step="0.5" value="0">
+                    </div>
+                </div>
+            </section>
+            <!--Reset & Export Section--> 
+            <section class="section mt-auto actions">
                 <button class="btn btn-outline-danger" id="reset">Reset All Changes</button>
                 <button class="btn btn-primary fw-semibold" id="export">Export Image</button>
             </section>
         </aside>
-
+        <!--Canvas Area--> 
         <section class="canvas-area">
             <div class="stage">
                 <img id="img" alt="Editable asset">
@@ -92,6 +148,7 @@
         </section>
     </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
     <script src="editor.js"></script>
 </body>
