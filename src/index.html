@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickEdit JS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="editor-container">
+        <div class="canvas-area">
+            <canvas id="mainCanvas"></canvas>
+            <p id="placeholder">Upload an image to start</p>
+        </div>
+        
+        <div class="controls">
+            <input type="file" id="upload" accept="image/*">
+            
+            <div class="filter-group">
+                <button onclick="applyFilter('grayscale(100%)')">B&W</button>
+                <button onclick="applyFilter('sepia(100%)')">Sepia</button>
+                <button onclick="applyFilter('invert(100%)')">Invert</button>
+                <button onclick="resetImage()">Reset</button>
+            </div>
+
+            <div class="action-group">
+                <button id="download">Download</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

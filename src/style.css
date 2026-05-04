@@ -1,0 +1,50 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    background: #1a1a1a;
+    color: white;
+}
+
+.editor-container {
+    margin-top: 50px;
+    text-align: center;
+    width: 80%;
+}
+
+.canvas-area {
+    background: #333;
+    min-height: 400px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+canvas {
+    max-width: 100%;
+    max-height: 600px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+button {
+    padding: 10px 20px;
+    cursor: pointer;
+    background: #444;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+button:hover {
+    background: #666;
+}
