@@ -1,7 +1,6 @@
+# PixelEdit Image Editor
 
-# PixelFlow Image Editor
-
-PixelFlow is a responsive browser-based image editor built with HTML, CSS, JavaScript, Bootstrap, Bootstrap Icons, and Cropper.js. It offers a clean SaaS-style interface for uploading, editing, cropping, adjusting, previewing, and exporting images directly in the browser.
+PixelEdit is a responsive browser-based image editor built with HTML, CSS, JavaScript, Bootstrap, Bootstrap Icons, and Cropper.js. It offers a clean SaaS-style interface for uploading, editing, cropping, adjusting, previewing, and exporting images directly in the browser.
 
 ## Features
 
@@ -38,7 +37,7 @@ PixelFlow is a responsive browser-based image editor built with HTML, CSS, JavaS
 
 ## Presets
 
-PixelFlow includes multiple working image presets:
+PixelEdit includes multiple working image presets:
 
 - Black and White
 - Invert
@@ -53,7 +52,7 @@ Preset buttons include custom color styles for a more polished editor interface.
 
 ## Adjustments
 
-PixelFlow includes live adjustment sliders for:
+PixelEdit includes live adjustment sliders for:
 
 - Brightness
 - Contrast
@@ -84,9 +83,10 @@ The Presets and Adjustments sections are collapsible, allowing users to keep the
 
 ```text
 project-folder/
-  index.html
-  style.css
-  script.js
+├── src/
+     ├── index.html
+     ├── styles.css
+     ├── editor.js
 ```
 ## How To Run
 
