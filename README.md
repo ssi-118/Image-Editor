@@ -123,3 +123,8 @@ The edited image is rendered using the browser Canvas API and downloaded as:
 ```text
 edited-image.png
 ```
+## Live Demo
+
+```
+https://image-editor-inky-six.vercel.app/
+```
